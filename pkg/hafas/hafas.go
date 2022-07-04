@@ -3,6 +3,7 @@ package hafas
 import (
 	"errors"
 	"net/url"
+	"strings"
 	"time"
 )
 
@@ -30,7 +31,7 @@ func NewClient(baseURL, timeZone string) (*Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	if u.Path != "bin" {
+	if !strings.HasSuffix(u.Path, "/bin") {
 		return nil, errors.New("invalid base URL")
 	}
 

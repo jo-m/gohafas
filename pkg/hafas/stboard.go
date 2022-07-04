@@ -82,31 +82,22 @@ func (p Product) String() string {
 }
 
 func (p Product) Emoji() string {
-	if p.Icon == "icon_bus" {
+	switch p.Icon {
+	case "icon_bus":
 		return "🚍"
-	}
-
-	if p.Icon == "icon_train" {
+	case "icon_train":
 		return "🚆"
-	}
-
-	if p.Icon == "icon_tram" {
+	case "icon_tram":
 		return "🚊"
-	}
-
-	if p.Icon == "icon_funicular" {
+	case "icon_funicular":
 		return "🚞"
-	}
-
-	if p.Icon == "icon_cable_car" {
+	case "icon_cable_car":
 		return "🚡"
-	}
-
-	if p.Icon == "icon_boat" {
+	case "icon_boat":
 		return "🛳"
 	}
 
-	panic(p.Icon)
+	panic(fmt.Sprintf("unknown icon: %s", p.Icon))
 }
 
 type RealTime struct {
@@ -127,6 +118,10 @@ type Location struct {
 	Platform  string        `json:"platform"`
 	RealTime  RealTime      `json:"realTime"`
 	Time      string        `json:"time"`
+}
+
+func (l Location) DateTime() string {
+	return fmt.Sprintf("%s %s", l.Date, l.Time)
 }
 
 type LocationPoint struct {
