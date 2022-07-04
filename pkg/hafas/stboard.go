@@ -9,6 +9,7 @@ import (
 	"html"
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -118,6 +119,21 @@ type Location struct {
 	Platform  string        `json:"platform"`
 	RealTime  RealTime      `json:"realTime"`
 	Time      string        `json:"time"`
+}
+
+func parseCountdown(c string) time.Duration {
+	i, err := strconv.ParseInt(c, 10, 32)
+	if err != nil {
+		panic(err)
+	}
+	return time.Minute * time.Duration(i)
+}
+
+func (l Location) BestCountdown() time.Duration {
+	if l.RealTime.HasRealTime {
+		return parseCountdown(l.RealTime.Countdown)
+	}
+	return parseCountdown(l.Countdown)
 }
 
 func (l Location) DateTime() string {
