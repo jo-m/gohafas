@@ -1,4 +1,4 @@
-# Go API client for HAFAS
+# Go API client for HAFAS (WIP)
 
 Currently, only stop search and stationboard endpoints are implemented.
 The only API which has been tested is the [ZVV](https://www.zvv.ch/) one.
