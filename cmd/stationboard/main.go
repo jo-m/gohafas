@@ -12,7 +12,7 @@ import (
 type flags struct {
 	TimeOut    time.Duration `arg:"-t,--timeout" default:"5s" help:"API timeout" placeholder:"T"`
 	MaxResults int           `arg:"-n,--max-results" default:"5" help:"max number of results" placeholder:"N"`
-	Stop       string        `arg:"positional" default:"Zürich HB" help:"stop name" placeholder:"STOP"`
+	Stop       string        `arg:"positional" default:"Zürich HB" help:"stop name, use cmd/findStops to find stops" placeholder:"STOP"`
 }
 
 // Description implements arg.Described in order
