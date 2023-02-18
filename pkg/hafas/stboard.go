@@ -168,10 +168,12 @@ func (c *Client) StBoard(ctx context.Context, stopName, stopID string, ts time.T
 	params.Add("tpl", "stbResult2json")
 
 	url := c.buildURL("/stboard.exe/dny", url.Values{})
+	// #nosec G107
 	resp, err := http.Post(url, "application/x-www-form-urlencoded; charset=UTF-8", bytes.NewBuffer([]byte(params.Encode())))
 	if err != nil {
 		return nil, err
 	}
+	// #nosec G307
 	defer resp.Body.Close()
 
 	if resp.StatusCode/100 != 2 {

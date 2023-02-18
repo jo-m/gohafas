@@ -57,6 +57,7 @@ func (c *Client) GetStops(ctx context.Context, query string, nResults int) ([]St
 	if err != nil {
 		return nil, err
 	}
+	// #nosec G307
 	defer resp.Body.Close()
 
 	if resp.StatusCode/100 != 2 {
