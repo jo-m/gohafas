@@ -23,8 +23,9 @@ type Client struct {
 
 // NewClient creates a new client.
 // Parameters:
-//   baseURL: e.g. https://zvv.hafas.cloud/bin
-//   timeZone: e.g. Europe/Zurich
+//
+//	baseURL: e.g. https://zvv.hafas.cloud/bin
+//	timeZone: e.g. Europe/Zurich
 func NewClient(baseURL, timeZone string) (*Client, error) {
 
 	u, err := url.Parse(baseURL)
